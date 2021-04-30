@@ -1,1 +1,255 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sakshi</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="{{url_for('static',filename='style.css')}}" rel="stylesheet" />
+  </head>
+  <body>
+    <h1>Power Consumption Data Analysis for year 2019 and 2020 in India.</h1>
+    <h2>This is a analysis of power consumption by the states of india in year 2019 and 2020. The visualization is done with
+    the help of Matplotlib and seaborn. The frontend is done with HTML , javascript and CSS and backend is done by the flask framework.</h2>
+    <h3>Presented by : Sakshi Pandey</h3>
+    <div class="tabcontainer" num="1">
+      <div class="tab">
+        <button class="tablinks active" onclick="opengraph(event, 1, 1)">
+          TABLE 1
+        </button>
+        <button class="tablinks" onclick="opengraph(event, 2, 1)">TABLE 2</button>
+      </div>
 
+      <div id="1" class="tabcontent active">
+        <div class="data">
+        <table>
+          <tr>
+            <th>SNo.</th>
+            {% for i in headings1 %}
+            <th>{{i}}</th>
+            {% endfor %}
+          </tr>
+          {% for i in range(15) %}
+          <tr>
+            <td>{{i+1}}</td>
+            {% for j in range(0,13) %}
+            <td>{{data1[i][j]}}</td>
+            {% endfor %}
+          </tr>
+          {% endfor %}
+        </table>
+      </div>
+      </div>
+
+      <div id="1" class="tabcontent">
+        <div class="data">
+        <table>
+          <tr>
+            <th>SNo.</th>
+            {% for i in headings2 %}
+            <th>{{i}}</th>
+            {% endfor %}
+          </tr>
+          {% for i in range(15) %}
+          <tr>
+            <td>{{i+1}}</td>
+            {% for j in data2[i] %}
+            <td>{{j}}</td>
+            {% endfor %}
+          </tr>
+          {% endfor %}
+        </table>
+      </div>
+      </div>
+    </div>
+    <br /><br />
+    <!--second tab-->
+
+    <div class="tabcontainer" num="2">
+      <div class="tab">
+        <button class="tablinks active" onclick="opengraph(event, 1, 2)">
+          GRAPH
+        </button>
+        <button class="tablinks" onclick="opengraph(event, 2, 2)">ANALYSIS</button>
+      </div>
+
+      <div id="1" class="tabcontent active">
+        <img src="{{url_for('static',filename='./images/plot1.png')}}">
+      </div>
+
+      <div id="2" class="tabcontent">
+        <h3>Average Consumption</h3>
+        <p>This bar plot is made showing the average power consumption by each state during year 2019 and 2020.The plot shows that Maharashtra is
+        the highest average power consumer followed by Gujarat and UP.</p>
+      </div>
+    </div>
+    <br /><br />
+    <!--third tab-->
+    <div class="tabcontainer" num="3">
+    <div class="tab" >
+        <button class="tablinks active" onclick="opengraph(event, 1, 3)">
+          GRAPH
+        </button>
+        <button class="tablinks" onclick="opengraph(event, 2, 3)">ANALYSIS</button>
+      </div>
+
+      <div id="1" class="tabcontent active">
+        <img src="{{url_for('static',filename='./images/plot2.png')}}">
+      </div>
+
+      <div id="2" class="tabcontent">
+        <h3>Region wise power Consumption </h3>
+        <p>This line graph shows the power consumed by regions viz NR , SR , ER , WR , NER of india. This graph clearly depicts that
+        the average power consumed by a state in West region is maximum and in North East Region is minimum.</p>
+      </div>
+    </div>
+   </div>
+   <br/><br/>
+        <!--fourth tab-->
+    <div class="tabcontainer1" num="1">
+    <div class="tab" >
+        <button class="tablinks active" onclick="opengraph1(event, 1, 1)">
+          GRAPH
+        </button>
+        <button class="tablinks" onclick="opengraph1(event, 2, 1)">ANALYSIS</button>
+      </div>
+
+      <div id="1" class="tabcontent active">
+        <img src="{{url_for('static',filename='./images/plot4.png')}}">
+      </div>
+
+      <div id="2" class="tabcontent">
+        <h3>Average consumption in a state of a Particular Region.</h3>
+        <p>This pie chart shows the average power consumption in a states of a region compared to the average power consumption
+        of states of another region . From this chart we can see that average power consumption in WR states is maximum compared to
+        other region and is minimum for states of North Eastern Region.</p>
+      </div>
+    </div>
+   </div>
+   <br/><br/>
+        <!--fourth tab-->
+    <div class="tabcontainer1" num="2">
+    <div class="tab" >
+        <button class="tablinks active" onclick="opengraph1(event, 1, 2)">
+          GRAPH
+        </button>
+        <button class="tablinks" onclick="opengraph1(event, 2, 2)">ANALYSIS</button>
+      </div>
+
+      <div id="5" class="tabcontent active">
+        <img src="{{url_for('static',filename='./images/plot5.png')}}">
+      </div>
+
+      <div id="5" class="tabcontent">
+        <h3>Annual power consumption 2019</h3>
+        <p>This bar plot shows the total consumption of power in year 2019 by different states. From the graph we can say that maharashtra
+        has maximum annual consumption followed by gujarat and UP in the year 2019. The Y axis depicts the total sum of consumption by
+        the corresponding state. </p>
+      </div>
+    </div>
+   </div>
+   <br/><br/>
+    <div class="tabcontainer1" num="3">
+    <div class="tab" >
+        <button class="tablinks active" onclick="opengraph1(event, 1, 3)">
+          GRAPH
+        </button>
+        <button class="tablinks" onclick="opengraph1(event, 2, 3)">ANALYSIS</button>
+      </div>
+
+      <div id="1" class="tabcontent active">
+        <img src="{{url_for('static',filename='./images/plot6.png')}}">
+      </div>
+
+      <div id="2" class="tabcontent">
+        <h3>Annual power consumption 2020</h3>
+        <p>This bar plot shows the total consumption of power in year 2020 by different states. From the graph we can say that maharashtra
+        has maximum annual consumption followed by gujarat and UP in the year 2020. The Y axis depicts the total sum of consumption by
+        the corresponding state.</p>
+      </div>
+    </div>
+   </div>
+   <br/><br/>
+    <div class="tabcontainer2" num="1">
+    <div class="tab" >
+        <button class="tablinks active" onclick="opengraph2(event, 1, 1)">
+          GRAPH
+        </button>
+        <button class="tablinks" onclick="opengraph2(event, 2, 1)">ANALYSIS</button>
+      </div>
+
+      <div id="1" class="tabcontent active">
+        <img src="{{url_for('static',filename='./images/plot7.png')}}">
+      </div>
+
+      <div id="2" class="tabcontent">
+        <h3>Correlation matrix for Regions.</h3>
+        <p>This is a correlation heatmap showing relation between the power usage by different regions. </p>
+      </div>
+    </div>
+   </div>
+   <br/><br/>
+    <div class="tabcontainer2" num="2">
+    <div class="tab" >
+        <button class="tablinks active" onclick="opengraph2(event, 1, 2)">
+          GRAPH
+        </button>
+        <button class="tablinks" onclick="opengraph2(event, 2, 2)">ANALYSIS</button>
+      </div>
+
+      <div id="1" class="tabcontent active">
+        <img src="{{url_for('static',filename='./images/plot8.png')}}">
+      </div>
+
+      <div id="2" class="tabcontent">
+        <h3>Power consumption variation in different regions.</h3>
+        <p>This graph shows the nature of variation of power usage in different regions with respect to time . We can also
+        conclude that Norther region has maximum total power consumption on most days and the power consumption and its variation
+        in North Eastern region is not very significant witn respect to other regions.</p>
+      </div>
+    </div>
+   </div>
+    <br/><br/>
+    <div class="tabcontainer2" num="3">
+    <div class="tab" >
+        <button class="tablinks active" onclick="opengraph2(event, 1, 3)">
+          GRAPH
+        </button>
+        <button class="tablinks" onclick="opengraph2(event, 2, 3)">ANALYSIS</button>
+      </div>
+
+      <div id="1" class="tabcontent active">
+        <img src="{{url_for('static',filename='./images/plot9.png')}}">
+      </div>
+
+      <div id="2" class="tabcontent">
+        <h3>Power Consumption before and after Lockdown</h3>
+        <p>In this bar plot equal amount of days are taken before and after lockdown so as to analyze the change in consumption in each state
+        .From graph we can see that power consumption has increased slightly in MP , Rajasthan etc. and is decreased in Punjab , UP etc.</p>
+      </div>
+    </div>
+   </div>
+    <br/><br/>
+    <div class="tabcontainer3" num="1">
+    <div class="tab" >
+        <button class="tablinks active" onclick="opengraph3(event, 1, 1)">
+          GRAPH
+        </button>
+        <button class="tablinks" onclick="opengraph3(event, 2, 1)">ANALYSIS</button>
+      </div>
+
+      <div id="1" class="tabcontent active">
+        <img src="{{url_for('static',filename='./images/plot3.png')}}">
+      </div>
+
+      <div id="2" class="tabcontent">
+        <h3>Geographic Map Plot</h3>
+        <p>This map is drawn with the help of latitude and longitude data and it shows the power usage in different regions. Density
+        of usage is also clearly depicted in this map.</p>
+      </div>
+    </div>
+   </div>
+    <br/><br/>
+
+    <script src="{{url_for('static',filename='main.js')}}"></script>
+  </body>
+</html>
